@@ -1,0 +1,47 @@
+header{
+    z-index: 5;
+    min-height: 60px;
+    max-height: 60px;
+    background-color: #009688;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.headerBtns {
+    display: flex;
+    margin-right: 10%;
+}
+
+header .logo {
+    min-width: 100px;
+    background-color: #009688;
+    border-radius: 10px;
+    width: 120%;
+}
+
+header .LogoRedirect{ 
+    z-index: 5;
+    margin-top: 3.2%;
+    margin-left: 10%;
+    
+    min-width: 100px;
+
+}
+
+@media only screen and (max-width: 600px) {
+    header {
+      background-color: lightblue;
+    }
+ 
+    header .LogoRedirect{ 
+        z-index: 5;
+        margin-top: 13.5%;
+        margin-left: 10%;
+        
+        width: 50%;
+        min-width: 100px;
+    
+    }
+  }
