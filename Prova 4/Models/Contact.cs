@@ -11,7 +11,7 @@ namespace Prova_4.Models
     {
         private int idContact;
         private string name, email, cellphone;
-        private User user_;
+        private int user_;
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +24,6 @@ namespace Prova_4.Models
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Cellphone { get => cellphone; set => cellphone = value; }
         [Required]
-        public User User_idUser { get => user_; set => user_ = value; }
+        public int User_idUser { get => user_; set => user_ = value; }
     }
 }

@@ -1,18 +1,13 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Prova_4.Data;
 using Prova_4.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Prova_4.Controllers
 {
@@ -21,18 +16,18 @@ namespace Prova_4.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IdDbContext _context;
 
-        public ContactsController(ApplicationDbContext context)
+        public ContactsController(IdDbContext context)
         {
             _context = context;
         }
 
         // GET: api/Contacts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contact>>> GetContact()
+        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
-            return await _context.Contact.ToListAsync();
+            return await _context.Contacts.ToListAsync();
         }
 
         // GET: api/Contacts/5
@@ -40,24 +35,24 @@ namespace Prova_4.Controllers
         [HttpGet("userId:{id}")]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContactList(int id)
         {
-            var list = await _context.Contact.ToListAsync();
+            var list = await _context.Contacts.ToListAsync();
+            var list2 = new List<Contact>();
 
             foreach (var item in list)
             {
                 if (item.User_idUser == id)
                 {
-                    user.IdUser = item.IdUser;
+                    list2.Add(item);
                 }
             }
-
-            return Ok();
+            return Ok(list2);
         }
 
         // GET: api/Contacts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Contact>> GetContact(int id)
         {
-            var contact = await _context.Contact.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(id);
 
             if (contact == null)
             {
@@ -105,7 +100,7 @@ namespace Prova_4.Controllers
         [HttpPost]
         public async Task<ActionResult<Contact>> PostContact(Contact contact)
         {
-            _context.Contact.Add(contact);
+            _context.Contacts.Add(contact);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetContact", new { id = contact.IdContact }, contact);
@@ -115,13 +110,13 @@ namespace Prova_4.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Contact>> DeleteContact(int id)
         {
-            var contact = await _context.Contact.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(id);
             if (contact == null)
             {
                 return NotFound();
             }
 
-            _context.Contact.Remove(contact);
+            _context.Contacts.Remove(contact);
             await _context.SaveChangesAsync();
 
             return contact;
@@ -129,7 +124,7 @@ namespace Prova_4.Controllers
 
         private bool ContactExists(int id)
         {
-            return _context.Contact.Any(e => e.IdContact == id);
+            return _context.Contacts.Any(e => e.IdContact == id);
         }
     }
 }

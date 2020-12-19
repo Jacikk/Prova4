@@ -8,19 +8,6 @@ import SignIn from './Pages/SignIn'
 import Home from './Pages/Home'
 import Perfil from './Pages/Perfil'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={props =>
-            isAuthenticated() ? (
-                <Component {...props} />
-            ) : (
-                    <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-                )
-        }
-    />
-);
-
 const Routes = () => (
     <BrowserRouter>
         <Switch>
@@ -29,7 +16,6 @@ const Routes = () => (
             <Route path="/SignIn" component= {SignIn} />
             <Route path="/Perfil" component= {Perfil} />
 
-            <PrivateRoute path="/app" component={() => <h1>Logado</h1>} />
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
     </BrowserRouter>

@@ -1,0 +1,24 @@
+.GravarContato {
+    display: flex;
+    background-color: grey;
+}
+
+.GravarContato form{
+    width: fit-content;
+    background:grey;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.GravarContato input{
+    border: darkgreen;
+    border-style: solid;
+    border-radius: 5px;
+
+    justify-content: space-around;
+    align-content: center;
+    align-items: baseline;
+    min-height: 3vh;
+    background-color: lightgreen;
+}

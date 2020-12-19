@@ -231,12 +231,10 @@ namespace Prova_4.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("User_IdUser")
+                    b.Property<int>("User_idUser")
                         .HasColumnType("int");
 
                     b.HasKey("IdContact");
-
-                    b.HasIndex("User_IdUser");
 
                     b.ToTable("Contacts");
                 });
@@ -255,13 +253,11 @@ namespace Prova_4.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("User_Id")
+                    b.Property<string>("User_")
                         .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("IdUser", "User_Id");
-
-                    b.HasIndex("User_Id");
+                    b.HasKey("IdUser");
 
                     b.ToTable("Users");
                 });
@@ -313,24 +309,6 @@ namespace Prova_4.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Prova_4.Models.Contact", b =>
-                {
-                    b.HasOne("Prova_4.Models.User", "User_")
-                        .WithMany()
-                        .HasForeignKey("User_IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Prova_4.Models.User", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User_")
-                        .WithMany()
-                        .HasForeignKey("User_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

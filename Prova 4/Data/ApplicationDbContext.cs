@@ -10,7 +10,7 @@ namespace Prova_4.Data
         {
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Contact> Contact { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         
     }
 }

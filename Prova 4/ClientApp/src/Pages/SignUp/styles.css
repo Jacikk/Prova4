@@ -2,10 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 87.6vh;
+  height: 84vh;
 }
 
-form{
+#SignUpContainer form{
   width: 400px;
   background: #009688;
   padding: 20px;
@@ -15,12 +15,12 @@ form{
   border-radius: 20px;
 }
 
-form img{
+#SignUpContainer form img{
     width: 100px;
     margin: 10px 0 40px;
 }
 
-form p {
+#SignUpContainer form p {
     color: #ff3333;
     margin-bottom: 15px;
     border: 1px solid #ff3333;
@@ -29,7 +29,7 @@ form p {
     text-align: center;
 }
 
-form input {
+#SignUpContainer form input {
     flex: 1;
     height: 46px;
     margin-bottom: 15px;
@@ -41,11 +41,11 @@ form input {
     border-radius: 20px;
 }
 
-form input::placeholder {
+#SignUpContainer form input::placeholder {
     color: #999;
 }
 
-form button {
+#SignUpContainer form button {
     color: rgb(0, 0, 0);
     font-size: 16px;
     background: #dbdbdb;
@@ -55,25 +55,25 @@ form button {
     width: 100%;
 }
 
-form hr {
+#SignUpContainer form hr {
     margin: 20px 0;
     border: none;
     border-bottom: 1px solid #cdcdcd;
     width: 100%;
 }
 
-form a {
+#SignUpContainer form a {
     font-size: 16;
     font-weight: bold;
     color: #999;
     text-decoration: none;
 }
 
-form a:hover{
+#SignUpContainer form a:hover{
     text-decoration: none;
 }
 
-#SignUpLogin {
+#SignUpContainer #SignUpLogin {
     
     color: rgb(0, 0, 0);
     font-size: 16px;

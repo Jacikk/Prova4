@@ -58,7 +58,7 @@ namespace Prova_4.Controllers
             {
                 Email = registerUser.Email,
                 Password = registerUser.Password,
-                User_ = user2
+                User_ = user2.Id
             };
             _context.Users.Add(user3);
             await _context.SaveChangesAsync();
@@ -80,7 +80,7 @@ namespace Prova_4.Controllers
 
                 foreach (var item in list)
                 {
-                    if(user2 == item.User_)
+                    if(user2.Id == item.User_)
                     {
                         user.IdUser = item.IdUser;
                     }

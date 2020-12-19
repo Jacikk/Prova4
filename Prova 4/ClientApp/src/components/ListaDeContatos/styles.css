@@ -1,0 +1,23 @@
+.list {
+    display: flex;
+    flex-direction: row;
+    background-color: lightgreen;
+    margin: 1%;
+
+    border: darkgreen;
+    border-style: solid;
+    border-radius: 5px;
+
+    justify-content: space-around;
+    align-content: center;
+    align-items: baseline;
+    min-height: 3vh;
+}
+
+.list p{
+    margin: 0;
+    display: flex;
+    align-self: center;
+    min-width: 20%;
+}
+

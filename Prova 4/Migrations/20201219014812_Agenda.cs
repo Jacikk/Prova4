@@ -48,6 +48,51 @@ namespace Prova_4.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    IdUser = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    User_ = table.Column<string>(maxLength: 256, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.IdUser);
+                    table.ForeignKey(
+                       name: "FK_Users_AspNetUsers_User_",
+                       column: x => x.User_,
+                       principalTable: "AspNetUsers",
+                       principalColumn: "Id",
+                       onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Contacts",
+                columns: table => new
+                {
+                    IdContact = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Cellphone = table.Column<string>(nullable: false),
+                    User_idUser = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contacts", x => x.IdContact);
+                    table.ForeignKey(
+                       name: "FK_Contacts_Users_User_User_idUser",
+                       column: x => x.User_idUser,
+                       principalTable: "Users",
+                       principalColumn: "IdUser",
+                       onDelete: ReferentialAction.Cascade);
+                });
+
+            
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -153,49 +198,6 @@ namespace Prova_4.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    IdUser = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Email = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
-                    User_Id = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.IdUser);
-                    table.ForeignKey(
-                        name: "FK_Users_AspNetUsers_User_Id",
-                        column: x => x.User_Id,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Contacts",
-                columns: table => new
-                {
-                    IdContact = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Cellphone = table.Column<string>(nullable: false),
-                    User_IdUser = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Contacts", x => x.IdContact);
-                    table.ForeignKey(
-                        name: "FK_Contacts_Users_User_IdUser",
-                        column: x => x.User_IdUser,
-                        principalTable: "Users",
-                        principalColumn: "IdUser",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -232,16 +234,6 @@ namespace Prova_4.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Contacts_User_IdUser",
-                table: "Contacts",
-                column: "User_IdUser");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_User_Id",
-                table: "Users",
-                column: "User_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -265,10 +257,10 @@ namespace Prova_4.Migrations
                 name: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

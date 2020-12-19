@@ -13,7 +13,7 @@ namespace Prova_4.Models
         private int idUser;
         private string email, password;
 
-        private IdentityUser user_;
+        private string user_;
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdUser { get => idUser; set => idUser = value; }
@@ -23,7 +23,7 @@ namespace Prova_4.Models
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Password { get => password; set => password = value; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Key]
-        public IdentityUser User_ { get => user_; set => user_ = value; }
+        [ForeignKey("Microsoft.AspNetCore.Identity.IdentityUser.Id")]
+        public string User_ { get => user_; set => user_ = value; }
     }
 }

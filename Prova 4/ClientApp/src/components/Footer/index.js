@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
     return <footer>
         
-        <Link to='/' className='LogoRedirect'>Voltar</Link>
+        <div className='Copyright'>Created by Vinicius Jacik &copy; 2020</div>
 
     </footer>
 }
