@@ -10,7 +10,6 @@ export default function Header() {
     if (isAuthenticated()) {
         return <header>
             <div className='headerBtns'>
-                <Button link='/Perfil' btnName='Perfil' />
                 <Button link='/' onClick={logout} btnName='Logout' />
             </div>
         </header>

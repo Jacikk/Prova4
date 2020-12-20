@@ -9,9 +9,9 @@ export default class AlterarContato extends Component {
     
     state = {
         idContact: this.props.idContact,
-        Name:"",
-        Cellphone: "",
-        Email:"",
+        Name:this.props.name,
+        Cellphone: this.props.cellphone,
+        Email:this.props.email,
         User_idUser: parseInt(getId()),
         toggleDropDown: false
     }
@@ -26,7 +26,7 @@ export default class AlterarContato extends Component {
         const { idContact, Name, Cellphone, Email, User_idUser} = this.state;
         this.setState({ User_idUser: parseInt(getId())});
         this.setState({ idContact: this.props.idContact});
-
+        
         if (!Name || !Cellphone || !Email) {
             this.setState({ error: "Todos os campos são obrigatórios" });
         } else {
@@ -41,7 +41,10 @@ export default class AlterarContato extends Component {
                     error:
                         "Houve um problema com o cadastro, verifique os dados."
                 });
+            } finally {
+                window.location.reload();
             }
+            
         }
     };
 
@@ -53,17 +56,17 @@ export default class AlterarContato extends Component {
 
                     <input
                         type="name"
-                        placeholder="Nome"
+                        placeholder={this.props.name}
                         onChange={e => this.setState({ Name: e.target.value })}
                     />
                     <input
                         type="cellphone"
-                        placeholder="Telefone"
+                        placeholder={this.state.Cellphone}
                         onChange={e => this.setState({ Cellphone: e.target.value })}
                     />
                     <input
                         type="email"
-                        placeholder="Endereço de e-mail"
+                        placeholder={this.state.Email}
                         onChange={e => this.setState({ Email: e.target.value })}
                     />
                     

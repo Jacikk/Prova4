@@ -1,3 +1,5 @@
+import Api from '../services/api'
+
 export const TOKEN_KEY = "@Agenda_backend/token";
 
 export const isAuthenticated = () => sessionStorage.getItem(TOKEN_KEY) !== null;
@@ -15,6 +17,17 @@ export const userId = id => {
 };
 
 export const logout = () => {
-  sessionStorage.removeItem(TOKEN_KEY);
-  sessionStorage.removeItem("@Agenda_backend/UserId");
+  try {
+    Api.post("/auth/Logout");
+
+  } catch (err) {
+    this.setState({
+      error:
+        "Houve um problema com o login, verifique suas credenciais."
+    });
+  } finally {
+    console.log("Deslogou tudo certo");
+    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem("@Agenda_backend/UserId");
+  }
 };

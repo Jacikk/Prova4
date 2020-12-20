@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './styles.css'
 
 import AlterarContatoButton from '../AlterarContato';
@@ -23,7 +24,7 @@ const ContactsList = (props) => {
               <p >Email:<br />{contact.email}</p>
             </div>
             <div id='lightgreen'>
-              <AlterarContatoButton idContact={contact.idContact} />
+              <AlterarContatoButton idContact={contact.idContact} name={contact.name} cellphone={contact.cellphone} email={contact.email} />
               <DeletarContato idContact={contact.idContact} />
             </div>
           </div>

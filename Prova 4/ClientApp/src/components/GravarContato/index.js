@@ -60,7 +60,7 @@ export default class GravarContato extends Component {
                         onChange={e => this.setState({ Email: e.target.value })}
                     />
                     
-                    <button type="submit" id='loginBtn'>Salvar</button>
+                    <button type="submit" id='loginBtn'>Adicionar</button>
                     <hr />
                 </form>
                 {this.state.error && <p>{this.state.error}</p>}

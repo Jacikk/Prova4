@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Prova_4.Data;
@@ -17,6 +18,7 @@ namespace Prova_4.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly IdDbContext _context;
+
 
         public ContactsController(IdDbContext context)
         {
