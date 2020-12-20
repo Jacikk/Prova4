@@ -18,6 +18,13 @@
     margin: 0;
     display: flex;
     align-self: center;
-    min-width: 20%;
+    min-width: 10vw;
 }
 
+.listRow{
+    display: flex;
+}
+
+#lightgreen{
+    background-color: lightgreen;
+}

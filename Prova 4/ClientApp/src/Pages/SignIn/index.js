@@ -58,6 +58,7 @@ class SignIn extends Component {
             <Header />
             <div id='SignUpContainer'>
                 <form onSubmit={this.handleSignIn}>
+                <div id='h3'>BEM VINDO A SUA AGENDA!</div>
                     {this.state.error && <p>{this.state.error}</p>}
                     <input
                         type="email"

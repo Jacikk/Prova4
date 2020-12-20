@@ -4,6 +4,11 @@
   justify-content: center;
   height: 84vh;
 }
+#SignUpContainer #h3{
+    display: flex;
+    color:white;
+    font-size:x-large;
+}
 
 #SignUpContainer form{
   width: 400px;

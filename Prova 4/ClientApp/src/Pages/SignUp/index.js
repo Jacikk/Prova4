@@ -6,7 +6,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 
 import Api from '../../services/api'
-import { login } from "../../services/auth";
+import { login, userId } from "../../services/auth";
 
 class SignUp extends Component {
 
@@ -24,7 +24,9 @@ class SignUp extends Component {
     } else {
       try {
         const response = await Api.post("/auth/Registrar", { email, password, confirmPassword });
-        login(response.data.token);
+        var responseString = response.data.split(",");
+        login(responseString[0]);
+        userId(responseString[1]);
         this.props.history.push("/");
       } catch (err) {
         console.log(err);
@@ -39,6 +41,7 @@ class SignUp extends Component {
         <Header />
         <div id='SignUpContainer'>
           <form onSubmit={this.handleSignUp}>
+            <div id='h3'>BEM VINDO A SUA AGENDA!</div>
             {this.state.error && <p>{this.state.error}</p>}
             <input
               type="Email"

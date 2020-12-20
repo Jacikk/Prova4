@@ -1,18 +1,20 @@
-export const TOKEN_KEY = "@EvenBetterEvents/token";
+export const TOKEN_KEY = "@Agenda_backend/token";
 
-export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
+export const isAuthenticated = () => sessionStorage.getItem(TOKEN_KEY) !== null;
 
-export const getToken = () => localStorage.getItem(TOKEN_KEY);
-export const getId = () => localStorage.getItem("UserId");
+export const getToken = () => sessionStorage.getItem(TOKEN_KEY);
+
+export const getId = () => sessionStorage.getItem("@Agenda_backend/UserId");
+
 export const login = token => {
-  localStorage.setItem(TOKEN_KEY, token);
+  sessionStorage.setItem(TOKEN_KEY, token);
 };
 
 export const userId = id => {
-  localStorage.setItem("UserId", id);
+  sessionStorage.setItem("@Agenda_backend/UserId", id);
 };
 
 export const logout = () => {
-  localStorage.removeItem(TOKEN_KEY);
-  localStorage.removeItem("UserId");
+  sessionStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem("@Agenda_backend/UserId");
 };

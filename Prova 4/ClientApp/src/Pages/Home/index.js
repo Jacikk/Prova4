@@ -8,9 +8,8 @@ import GravarContato from '../../components/GravarContato'
 
 import Api from '../../services/api'
 
-import { login, isAuthenticated, getId } from "../../services/auth";
-
-
+import { isAuthenticated, getId } from "../../services/auth";
+import { Redirect } from 'react-router-dom';
 
 function Home() {
     const ListLoading = withListLoading(List);
@@ -22,12 +21,14 @@ function Home() {
     useEffect(() => {
         setAppState({ loading: true });
 
-        Api.get("Contacts/userId:" + getId()).then((contacts) => {
+        var resp = Api.get("Contacts/userId:" + getId()).then((contacts) => {
             const allcontacts = contacts.data;
             setAppState({ loading: false, contacts: allcontacts });
         });
+        console.log("resp");
+        console.log(resp);
     }, [setAppState]);
-
+    if(isAuthenticated())
     return (<section>
         <Header />
         <GravarContato />
@@ -44,5 +45,7 @@ function Home() {
         <Footer />
     </section>
     );
+    else return <Redirect to="/SignIn"/>
+  
 }
 export default Home;

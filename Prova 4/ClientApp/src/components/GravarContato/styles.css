@@ -1,11 +1,11 @@
 .GravarContato {
     display: flex;
-    background-color: grey;
+    background-color:lightgreen;
 }
 
 .GravarContato form{
     width: fit-content;
-    background:grey;
+    background:lightgreen;
     padding: 20px;
     display: flex;
     align-items: center;
